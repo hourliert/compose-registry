@@ -1,0 +1,22 @@
+version: '2'
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    networks:
+      - front
+    volumes:
+      - registry_data:/var/lib/registry
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_HOST=${VIRTUAL_HOST}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+
+volumes:
+  registry_data:
+
+networks:
+  front:
+    external:
+      name: proxy_front
