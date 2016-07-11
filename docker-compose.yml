@@ -7,14 +7,14 @@ services:
     networks:
       - front
     volumes:
-      - registry_data:/var/lib/registry
+      - data:/var/lib/registry
     environment:
       - VIRTUAL_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_HOST=${VIRTUAL_HOST}
       - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
 
 volumes:
-  registry_data:
+  data:
 
 networks:
   front:
